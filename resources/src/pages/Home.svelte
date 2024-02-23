@@ -1,4 +1,3 @@
-
 <script lang="ts">
     export let laravelVersion : string = '-'
     export let phpVersion : string = '-'

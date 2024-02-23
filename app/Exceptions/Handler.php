@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler
 
         if (app()->isProduction() && in_array($response->getStatusCode(), [500, 503, 404, 403])) {
             $status = $response->getStatusCode();
-            $error = $errorMessage = $e->getMessage();
+            $error = trans("http-statuses.$status");
 
             return inertia('Error', compact('status', 'error'))
                 ->toResponse($request)

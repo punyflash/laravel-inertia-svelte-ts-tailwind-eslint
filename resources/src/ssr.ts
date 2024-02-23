@@ -1,11 +1,10 @@
-import createServer from '@inertiajs/svelte/server'
-import { createInertiaApp } from '@inertiajs/svelte'
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
+import createServer from '@westacks/inertia-svelte/server';
+import { createInertiaApp } from '@westacks/inertia-svelte';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import type { ComponentType } from 'svelte';
 
-createServer(page =>
-    createInertiaApp({
-        page,
-        resolve: name => resolvePageComponent(`./pages/${name}.svelte`, import.meta.glob('./pages/**/*.svelte')),
-    }),
-import.meta.env.VITE_SSR_PORT ?? 13714
-)
+createServer(page => createInertiaApp({
+    page,
+    resolve: name => resolvePageComponent<ComponentType>(`./pages/${name}.svelte`, import.meta.glob<ComponentType>('./pages/**/*.svelte')),
+    setup: () => {}
+}), import.meta.env.VITE_SSR_PORT)
