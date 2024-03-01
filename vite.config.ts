@@ -16,9 +16,6 @@ export default defineConfig({
             preprocess: [sveltePreprocess({
                 typescript: true,
             })],
-            compilerOptions: {
-                hydratable: true,
-            },
         }),
         eslint({ fix: true }),
     ],
